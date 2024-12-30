@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@reduxjs/toolkit": "^2.4.0",
     "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
     "firebase": "^11.1.0",
     "next": "15.0.4",
     "react": "^19.0.0",
