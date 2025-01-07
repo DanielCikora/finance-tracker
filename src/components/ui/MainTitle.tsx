@@ -4,11 +4,11 @@ interface TitleProps {
 }
 const MainTitle: React.FC<TitleProps> = ({ titleText, className }) => {
   return (
-    <h1
-      className={`md:text-5xl text-3xl font-semibold text-offWhite ${className}`}
+    <h2
+      className={`md:text-5xl m-0 text-3xl font-semibold text-offWhite ${className}`}
     >
       {titleText}
-    </h1>
+    </h2>
   );
 };
 export default MainTitle;

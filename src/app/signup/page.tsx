@@ -15,8 +15,23 @@ const SignUpPage = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const route = useRouter();
+  const passwordRegex =
+    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handleSignUp = async (event: FormEvent) => {
     event.preventDefault();
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      toast.error("Invalid email address.");
+      return;
+    }
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be 8-16 characters, include at least one number, one uppercase letter, one lowercase letter, and one special character."
+      );
+      toast.error("Invalid password format.");
+      return;
+    }
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -33,7 +48,6 @@ const SignUpPage = () => {
       setOccupation("");
       setEmail("");
       setPassword("");
-      route.push("/");
     } catch (err: any) {
       setError(err.message);
       toast.error("Error signing up. Please try again.");
@@ -48,7 +62,7 @@ const SignUpPage = () => {
             <FormInput
               formHtmlFor='name'
               formId='name'
-              formInputType='name'
+              formInputType='text'
               formIsRequired
               formLabel='Full Name'
               formPlaceholder='Your Name'
@@ -58,7 +72,7 @@ const SignUpPage = () => {
             <FormInput
               formHtmlFor='phone'
               formId='phone'
-              formInputType='phone'
+              formInputType='number'
               formIsRequired
               formLabel='Phone Number'
               formPlaceholder='Your Phone'
@@ -68,7 +82,7 @@ const SignUpPage = () => {
             <FormInput
               formHtmlFor='occupation'
               formId='occupation'
-              formInputType='occupation'
+              formInputType='text'
               formIsRequired
               formLabel='Occupation'
               formPlaceholder='Your Occupation'

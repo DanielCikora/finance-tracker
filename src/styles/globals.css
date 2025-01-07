@@ -15,7 +15,7 @@ body {
   font-optical-sizing: auto;
 }
 .wrapper {
-  max-width: 1880px;
+  max-width: 100%;
   width: 100%;
   padding: 0 20px;
   margin: 0 auto;

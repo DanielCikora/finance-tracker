@@ -1,5 +1,6 @@
 "use client";
 import "../styles/globals.css";
+import "../styles/loader.css";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { ToastContainer } from "react-toastify";
@@ -19,7 +20,7 @@ export default function RootLayout({
     <Provider store={store}>
       <html lang='en'>
         <body>
-          <ToastContainer />
+          <ToastContainer position='top-center' />
           {children}
         </body>
       </html>

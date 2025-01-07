@@ -31,7 +31,7 @@ const FormInput: React.FC<FormInputDataTypes> = ({
         value={formValue}
         onChange={formOnChange}
         placeholder={formPlaceholder}
-        className='block py-2 w-full bg-inherit mb-2 px-2 text-md font-semibold border border-solid border-offWhite rounded'
+        className='block no-spinner py-2 w-full bg-inherit mb-2 px-2 text-md font-semibold border border-solid border-offWhite rounded'
       />
     </>
   );
