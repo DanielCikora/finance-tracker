@@ -1,4 +1,5 @@
 "use client";
+import useTransactions from "./../utils/hooks/transactions";
 import {
   BarChart,
   CartesianGrid,
@@ -13,6 +14,8 @@ interface StatisticsDataTypes {
   moneyRemaining: number;
 }
 const Statistics = () => {
+  const transactions = useTransactions();
+  console.log("Should be transactions: ", transactions);
   const data: StatisticsDataTypes[] = [
     { month: "Jan", moneyRemaining: 2000 },
     { month: "Feb", moneyRemaining: 1600 },
@@ -42,7 +45,7 @@ const Statistics = () => {
     <div className='w-full md:h-[500px] h-[300px] mb-10'>
       {data && data.length > 0 && (
         <ResponsiveContainer width='100%' height='100%'>
-          <BarChart data={data}>
+          <BarChart data={transactions}>
             <CartesianGrid stroke='#E4E4E4' strokeDasharray='3 3' />
             <XAxis dataKey='month' stroke='#f5f5f5' />
             <YAxis stroke='#f5f5f5' />

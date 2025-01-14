@@ -1,16 +1,9 @@
 "use client";
 import { initializeApp } from "firebase/app";
+import { initializeFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
-interface FirebaseConfigurationDataTypes {
-  apiKey: string | undefined;
-  authDomain: string | undefined;
-  projectId: string | undefined;
-  storageBucket: string | undefined;
-  messagingSenderId: string | undefined;
-  appId: string | undefined;
-  measurementId: string | undefined;
-}
+import { getAnalytics, isSupported } from "firebase/analytics";
+import { FirebaseConfigurationDataTypes } from "@/components/utils/constants/dataTypes";
 const firebaseConfig: FirebaseConfigurationDataTypes = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -21,5 +14,12 @@ const firebaseConfig: FirebaseConfigurationDataTypes = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
+let analytics: ReturnType<typeof getAnalytics> | undefined;
+isSupported().then((supported) => {
+  if (supported) {
+    analytics = getAnalytics(app);
+  }
+});
+export const db = initializeFirestore(app, {});
 export const auth = getAuth(app);
+export { analytics };
