@@ -1,0 +1,45 @@
+.text-black {
+  @apply text-[#2C3333];
+}
+.bg-black {
+  @apply bg-[#2C3333];
+}
+.text-navy {
+  @apply text-[#395B64];
+}
+.border-navy {
+  @apply text-[#395B64];
+}
+.bg-navy {
+  @apply bg-[#395B64];
+}
+.text-teal {
+  @apply text-[#A5C9CA];
+}
+.bg-teal {
+  @apply bg-[#A5C9CA];
+}
+.text-white {
+  @apply text-[#F1F5F4];
+}
+.bg-white {
+  @apply bg-[#F1F5F4];
+}
+.text-green {
+  @apply text-[#4CAF50];
+}
+.bg-green {
+  @apply bg-[#4CAF50];
+}
+.text-red {
+  @apply text-[#E63946];
+}
+.bg-red {
+  @apply bg-[#E63946];
+}
+.text-blue {
+  @apply text-[#008DDA];
+}
+.bg-blue {
+  @apply bg-[#008DDA];
+}
