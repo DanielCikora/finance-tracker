@@ -1,4 +1,5 @@
 export type ExpensesDataTypes = {
+  expenseId: number;
   expenseName: string;
   expenseCost: string | number;
 };

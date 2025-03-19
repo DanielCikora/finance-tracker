@@ -20,7 +20,8 @@ export default function Finance() {
   });
 
   const [allExpenses, setAllExpenses] = useState<ExpensesDataTypes[]>([]);
-  const [expenses, setExpenses] = useState<ExpensesDataTypes>({
+  const [expense, setExpense] = useState<ExpensesDataTypes>({
+    expenseId: 0,
     expenseName: "",
     expenseCost: "",
   });
@@ -43,28 +44,42 @@ export default function Finance() {
 
   // Expenses
 
-  const handleExpenses = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeExpenses = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
-    setExpenses((prevExpenses) => ({
+    setExpense((prevExpenses) => ({
       ...prevExpenses,
       [name]: value,
     }));
   };
 
   const handleSaveExpenses = () => {
-    setAllExpenses((prevAllExpenses) => [...prevAllExpenses, expenses]);
-    setExpenses({
+    setAllExpenses((prevAllExpenses) => [...prevAllExpenses, expense]);
+    setExpense((nextExpense) => ({
+      expenseId: nextExpense.expenseId + 1,
       expenseCost: "",
       expenseName: "",
-    });
+    }));
   };
 
-  const allPrices = allExpenses.map((cost) => Number(cost.expenseCost));
+  const allPrices: number[] = allExpenses.map((cost) =>
+    Number(cost.expenseCost)
+  );
 
-  const totalExpensesAmount = allPrices.reduce(
+  const totalExpensesAmount: number = allPrices.reduce(
     (accumulator, expenseCost) => accumulator + expenseCost,
     0
   );
+
+  const handleRemoveExpense = (removeExpenseId: number) => {
+    setAllExpenses((prevAllExpenses) =>
+      prevAllExpenses.filter((expense) => expense.expenseId !== removeExpenseId)
+    );
+  };
+
+  // Total remaining salary
+  const remainingSalary: number =
+    Number(savedSalary.salaryAmount) - totalExpensesAmount;
+
   return (
     <div className='wrapper'>
       <div className='finance-content'>
@@ -83,13 +98,17 @@ export default function Finance() {
             <h2 className='expense-price text-lg'>
               Total Expenses: {totalExpensesAmount} {salary.salaryCurrency}
             </h2>
+            <h1>
+              Remaining Salary: {remainingSalary} {salary.salaryCurrency}
+            </h1>
           </div>
           <Expenses
             allExpenses={allExpenses}
-            expenses={expenses}
-            handleExpenses={handleExpenses}
+            expense={expense}
+            handleChangeExpenses={handleChangeExpenses}
             handleSaveExpenses={handleSaveExpenses}
             salaryCurrency={salary.salaryCurrency}
+            handleRemoveExpense={handleRemoveExpense}
           />
         </div>
       </div>

@@ -16,9 +16,10 @@ export type SalaryPropsDataTypes = {
 };
 
 export type ExpensesPropsDataTypes = {
-  handleExpenses: ChangeEventHandler<HTMLInputElement>;
-  expenses: ExpensesDataTypes;
+  handleChangeExpenses: ChangeEventHandler<HTMLInputElement>;
+  expense: ExpensesDataTypes;
   handleSaveExpenses: () => void;
   allExpenses: ExpensesDataTypes[];
   salaryCurrency: SalaryCurrencyType;
+  handleRemoveExpense: (removeExpenseId: number) => void;
 };
