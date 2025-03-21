@@ -8,7 +8,9 @@ import {
   SalaryCurrencyType,
   SalaryDataTypes,
 } from "@/types/financesDataTypes";
+import Totals from "./Totals";
 export default function Finance() {
+  // Salary
   const [salary, setSalary] = useState<SalaryDataTypes>({
     salaryAmount: "",
     salaryCurrency: SalaryCurrencyType.USD,
@@ -18,12 +20,23 @@ export default function Finance() {
     salaryAmount: 0,
     salaryCurrency: SalaryCurrencyType.USD,
   });
-
+  // Expenses
   const [allExpenses, setAllExpenses] = useState<ExpensesDataTypes[]>([]);
+  // Expenses Date
+  const date: Date = new Date();
+  date.toLocaleString();
+  const formattedDate = new Intl.DateTimeFormat("en-gb", {
+    dateStyle: "short",
+    timeStyle: "short",
+  });
+  const format = formattedDate.format(date);
+  // Expenses Initial
   const [expense, setExpense] = useState<ExpensesDataTypes>({
     expenseId: 0,
     expenseName: "",
     expenseCost: "",
+    expenseDescription: "",
+    expenseDate: format,
   });
 
   // Salary
@@ -54,10 +67,13 @@ export default function Finance() {
 
   const handleSaveExpenses = () => {
     setAllExpenses((prevAllExpenses) => [...prevAllExpenses, expense]);
+    localStorage.setItem("expenses", JSON.stringify(expense));
     setExpense((nextExpense) => ({
       expenseId: nextExpense.expenseId + 1,
       expenseCost: "",
       expenseName: "",
+      expenseDescription: "",
+      expenseDate: format,
     }));
   };
 
@@ -82,35 +98,28 @@ export default function Finance() {
 
   return (
     <div className='wrapper'>
-      <div className='finance-content'>
-        <div className='flex justify-between gap-2 w-full'>
-          <Salary
-            handleSaveSalaryAmount={handleSaveSalaryAmount}
-            handleChangeSalaryAmount={handleChangeSalaryAmount}
-            salary={salary}
-            currencyOptions={currencyOptions}
-            savedSalary={savedSalary}
-          />
-          <div className='w-full'>
-            <h2 className='expense-price text-lg'>
-              Total Salary: {savedSalary.salaryAmount} {salary.salaryCurrency}
-            </h2>
-            <h2 className='expense-price text-lg'>
-              Total Expenses: {totalExpensesAmount} {salary.salaryCurrency}
-            </h2>
-            <h1>
-              Remaining Salary: {remainingSalary} {salary.salaryCurrency}
-            </h1>
-          </div>
-          <Expenses
-            allExpenses={allExpenses}
-            expense={expense}
-            handleChangeExpenses={handleChangeExpenses}
-            handleSaveExpenses={handleSaveExpenses}
-            salaryCurrency={salary.salaryCurrency}
-            handleRemoveExpense={handleRemoveExpense}
-          />
-        </div>
+      <div className='finance-content py-4 flex gap-4 w-full'>
+        <Salary
+          handleSaveSalaryAmount={handleSaveSalaryAmount}
+          handleChangeSalaryAmount={handleChangeSalaryAmount}
+          salary={salary}
+          currencyOptions={currencyOptions}
+          savedSalary={savedSalary}
+        />
+        <Totals
+          savedSalary={savedSalary}
+          salary={salary}
+          totalExpensesAmount={totalExpensesAmount}
+          remainingSalary={remainingSalary}
+        />
+        <Expenses
+          allExpenses={allExpenses}
+          expense={expense}
+          handleChangeExpenses={handleChangeExpenses}
+          handleSaveExpenses={handleSaveExpenses}
+          salaryCurrency={salary.salaryCurrency}
+          handleRemoveExpense={handleRemoveExpense}
+        />
       </div>
     </div>
   );

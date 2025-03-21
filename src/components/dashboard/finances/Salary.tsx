@@ -9,30 +9,34 @@ export default function Salary({
   currencyOptions,
 }: SalaryPropsDataTypes) {
   return (
-    <div className='dashboard-salary w-full'>
+    <div className='salary-content shadow-md max-w-[500px] max-h-fit shadow-black rounded p-4 w-full flex flex-col justify-between gap-4'>
+      <div className='flex gap-4 justify-between'>
+        <Input
+          name='salaryAmount'
+          placeholder='Salary Amount'
+          onChange={handleChangeSalaryAmount}
+          type='number'
+          value={salary.salaryAmount}
+          className='max-w-full'
+        />
+        <Select
+          name='salaryCurrency'
+          onChange={handleChangeSalaryAmount}
+          value={salary.salaryCurrency}
+        >
+          {currencyOptions.map((currency) => (
+            <option key={currency} value={currency}>
+              {currency}
+            </option>
+          ))}
+        </Select>
+      </div>
       <Button
         onClick={handleSaveSalaryAmount}
         text='Set Salary'
         type='button'
+        className='self-center'
       />
-      <Input
-        name='salaryAmount'
-        placeholder='Expense Amount'
-        onChange={handleChangeSalaryAmount}
-        type='number'
-        value={salary.salaryAmount}
-      />
-      <Select
-        name='salaryCurrency'
-        onChange={handleChangeSalaryAmount}
-        value={salary.salaryCurrency}
-      >
-        {currencyOptions.map((currency) => (
-          <option key={currency} value={currency}>
-            {currency}
-          </option>
-        ))}
-      </Select>
     </div>
   );
 }

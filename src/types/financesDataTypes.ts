@@ -2,6 +2,8 @@ export type ExpensesDataTypes = {
   expenseId: number;
   expenseName: string;
   expenseCost: string | number;
+  expenseDescription: string;
+  expenseDate: string;
 };
 
 export enum SalaryCurrencyType {

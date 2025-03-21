@@ -13,4 +13,20 @@ export type InputDataTypes = {
   value: string | number;
   placeholder: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  className?: string;
+};
+
+export type TextAreaDataTypes = {
+  name: string;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
+  value: string;
+  rows: number;
+  cols: number;
+  placeholder: string;
+  className?: string;
+};
+
+export type XButtonDataTypes = {
+  onClick: () => void;
+  type: "button" | "reset";
 };

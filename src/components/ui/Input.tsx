@@ -5,6 +5,7 @@ export default function Input({
   value,
   placeholder,
   onChange,
+  className,
 }: InputDataTypes) {
   return (
     <input
@@ -13,7 +14,7 @@ export default function Input({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className='p-3 border-2 border-solid border-navy rounded'
+      className={`block w-full p-3 border-2 border-solid border-navy rounded ${className}`}
     />
   );
 }

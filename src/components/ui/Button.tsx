@@ -3,13 +3,19 @@ type ButtonDataTypes = {
   type: "button" | "submit" | "reset";
   onClick: MouseEventHandler<HTMLButtonElement>;
   text: string;
+  className?: string;
 };
-export default function Button({ type, text, onClick }: ButtonDataTypes) {
+export default function Button({
+  type,
+  text,
+  onClick,
+  className,
+}: ButtonDataTypes) {
   return (
     <button
       type={type}
       onClick={onClick}
-      className='cursor-pointer hover:text-red px-2 w-full max-w-[200px] text-white py-3 rounded bg-navy font-semibold'
+      className={`block cursor-pointer px-2 w-full max-w-[200px] text-white py-3 rounded bg-navy font-semibold ${className}`}
     >
       {text}
     </button>
