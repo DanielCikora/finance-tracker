@@ -3,6 +3,7 @@ import {
   ExpensesDataTypes,
   SalaryCurrencyType,
   SalaryDataTypes,
+  SalaryTimePeriod,
 } from "./financesDataTypes";
 
 export type SalaryPropsDataTypes = {
@@ -13,6 +14,7 @@ export type SalaryPropsDataTypes = {
   salary: SalaryDataTypes;
   currencyOptions: SalaryCurrencyType[];
   savedSalary: SalaryDataTypes;
+  timePeriodOptions: SalaryTimePeriod[];
 };
 
 export type ExpensesPropsDataTypes = {

@@ -7,6 +7,7 @@ export default function Salary({
   handleChangeSalaryAmount,
   salary,
   currencyOptions,
+  timePeriodOptions,
 }: SalaryPropsDataTypes) {
   return (
     <div className='salary-content shadow-md max-w-[500px] max-h-fit shadow-black rounded p-4 w-full flex flex-col justify-between gap-4'>
@@ -28,6 +29,15 @@ export default function Salary({
             <option key={currency} value={currency}>
               {currency}
             </option>
+          ))}
+        </Select>
+        <Select
+          onChange={handleSaveSalaryAmount}
+          name='salaryTimePeriod'
+          value={salary.salaryTimePeriod}
+        >
+          {timePeriodOptions.map((timePeriod) => (
+            <option key={timePeriod}>{timePeriod}</option>
           ))}
         </Select>
       </div>

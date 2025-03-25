@@ -13,7 +13,16 @@ export enum SalaryCurrencyType {
   INR = "INR",
 }
 
+export enum SalaryTimePeriod {
+  HOURLY = "Hourly",
+  DAILY = "Daily",
+  WEEKLY = "Weekly",
+  MONTHLY = "Monthly",
+  YEARLY = "Yearly",
+}
+
 export type SalaryDataTypes = {
   salaryCurrency: SalaryCurrencyType;
   salaryAmount: number | string;
+  salaryTimePeriod: SalaryTimePeriod;
 };
