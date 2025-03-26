@@ -6,7 +6,6 @@ import XButton from "@/components/ui/XButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTurnDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import Select from "@/components/ui/Select";
 export default function Expenses({
   handleChangeExpenses,
   expense,

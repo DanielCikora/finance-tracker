@@ -13,8 +13,8 @@ export type SalaryPropsDataTypes = {
   >;
   salary: SalaryDataTypes;
   currencyOptions: SalaryCurrencyType[];
-  savedSalary: SalaryDataTypes;
   timePeriodOptions: SalaryTimePeriod[];
+  savedSalary: SalaryDataTypes;
 };
 
 export type ExpensesPropsDataTypes = {
