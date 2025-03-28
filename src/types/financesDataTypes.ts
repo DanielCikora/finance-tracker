@@ -1,9 +1,23 @@
+export enum ExpenseCategory {
+  MISCELLANEOUS = "MISCELLANEOUS",
+  FOOD = "FOOD",
+  UTILITIES = "UTILITIES",
+  RENT = "RENT",
+  TRANSPORTATION = "TRANSPORTATION",
+  ENTERTAINMENT = "ENTERTAINMENT",
+  HEALTHCARE = "HEALTHCARE",
+  EDUCATION = "EDUCATION",
+  SAVINGS = "SAVINGS",
+  INVESTMENTS = "INVESTMENTS",
+}
+
 export type ExpensesDataTypes = {
   expenseId: number;
   expenseName: string;
   expenseCost: string | number;
   expenseDescription: string;
   expenseDate: string;
+  expenseCategory: ExpenseCategory;
 };
 
 export enum SalaryCurrencyType {

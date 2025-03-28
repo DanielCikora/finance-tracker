@@ -19,7 +19,7 @@ export type SalaryPropsDataTypes = {
 
 export type ExpensesPropsDataTypes = {
   handleChangeExpenses: ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
   >;
   expense: ExpensesDataTypes;
   handleSaveExpenses: () => void;

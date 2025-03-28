@@ -10,7 +10,7 @@ export default function useStock(ticker: string) {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    let isMounted = true;
+    let isMounted: boolean = true;
     const fetchStock = async () => {
       try {
         const response = await axios.get<{ c: number; d: number; dp: number }>(

@@ -4,7 +4,7 @@ import {
   SalaryDataTypes,
   SalaryTimePeriod,
 } from "@/types/financesDataTypes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function useSalary() {
   const [salary, setSalary] = useState<SalaryDataTypes>({
     salaryAmount: "",
@@ -21,12 +21,6 @@ export default function useSalary() {
           salaryTimePeriod: SalaryTimePeriod.YEARLY,
         };
   });
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedSalary = localStorage.getItem("salary");
-      setSavedSalary(storedSalary ? JSON.parse(storedSalary) : null);
-    }
-  }, []);
   const handleChangeSalaryAmount = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {

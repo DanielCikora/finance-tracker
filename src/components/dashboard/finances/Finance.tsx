@@ -24,29 +24,31 @@ export default function Finance() {
     Number(savedSalary.salaryAmount) - totalExpensesAmount;
   return (
     <div className='wrapper'>
-      <div className='finance-content py-4 flex gap-4 w-full'>
-        <Salary
-          handleSaveSalaryAmount={handleSaveSalaryAmount}
-          handleChangeSalaryAmount={handleChangeSalaryAmount}
-          salary={salary}
-          currencyOptions={currencyOptions}
-          timePeriodOptions={timePeriodOptions}
-          savedSalary={savedSalary}
-        />
-        <Totals
-          savedSalary={savedSalary}
-          salary={salary}
-          totalExpensesAmount={totalExpensesAmount}
-          remainingSalary={remainingSalary}
-        />
-        <Expenses
-          allExpenses={allExpenses}
-          expense={expense}
-          handleChangeExpenses={handleChangeExpenses}
-          handleSaveExpenses={handleSaveExpenses}
-          salaryCurrency={salary.salaryCurrency}
-          handleRemoveExpense={handleRemoveExpense}
-        />
+      <div className='finance-content py-4 md:flex-row flex-col gap-4 w-full justify-between'>
+        <div className='flex flex-row gap-4 w-full'>
+          <Salary
+            salary={salary}
+            currencyOptions={currencyOptions}
+            timePeriodOptions={timePeriodOptions}
+            savedSalary={savedSalary}
+            handleSaveSalaryAmount={handleSaveSalaryAmount}
+            handleChangeSalaryAmount={handleChangeSalaryAmount}
+          />
+          <Totals
+            salary={salary}
+            savedSalary={savedSalary}
+            remainingSalary={remainingSalary}
+            totalExpensesAmount={totalExpensesAmount}
+          />
+          <Expenses
+            allExpenses={allExpenses}
+            expense={expense}
+            salaryCurrency={salary.salaryCurrency}
+            handleChangeExpenses={handleChangeExpenses}
+            handleSaveExpenses={handleSaveExpenses}
+            handleRemoveExpense={handleRemoveExpense}
+          />
+        </div>
       </div>
     </div>
   );

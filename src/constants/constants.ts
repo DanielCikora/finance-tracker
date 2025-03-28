@@ -1,4 +1,5 @@
 import {
+  ExpenseCategory,
   SalaryCurrencyType,
   SalaryTimePeriod,
 } from "@/types/financesDataTypes";
@@ -9,12 +10,13 @@ export const currencyOptions: SalaryCurrencyType[] =
 export const timePeriodOptions: SalaryTimePeriod[] =
   Object.values(SalaryTimePeriod);
 
+export const expenseCategoryOptions: ExpenseCategory[] =
+  Object.values(ExpenseCategory);
+
 export const chartOptions = {
-  title: "Finance Tracker",
-  pieHole: 0.4,
+  alignment: "center",
   is3D: true,
   pieStartAngle: 100,
-  sliceVisibilityThreshold: 0.02,
   legend: {
     position: "bottom",
     alignment: "center",

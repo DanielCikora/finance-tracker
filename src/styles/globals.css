@@ -2,6 +2,11 @@
 @import "./normalize.css";
 @import "./custom-utilities.css";
 @import "tailwindcss";
+*,
+*::before,
+*::after {
+  scrollbar-width: thin;
+}
 body {
   font-family: "Outfit", sans-serif;
 }
