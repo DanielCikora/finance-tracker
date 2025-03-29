@@ -1,11 +1,16 @@
 "use client";
 import { ExpenseCategory, ExpensesDataTypes } from "@/types/financesDataTypes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function useExpense() {
-  const [allExpenses, setAllExpenses] = useState<ExpensesDataTypes[]>(() => {
-    const savedAllExpenses = localStorage.getItem("expenses");
-    return savedAllExpenses ? JSON.parse(savedAllExpenses) : [];
-  });
+  const [allExpenses, setAllExpenses] = useState<ExpensesDataTypes[] | null>(
+    []
+  );
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedExpenses = localStorage.getItem("expenses");
+      setAllExpenses(storedExpenses ? JSON.parse(storedExpenses) : []);
+    }
+  }, []);
   const date: Date = new Date();
   date.toLocaleString();
   const formattedDate = new Intl.DateTimeFormat("en-gb", {
@@ -30,7 +35,7 @@ export default function useExpense() {
   };
   const handleSaveExpenses = () => {
     setAllExpenses((prevAllExpenses) => {
-      const newAllExpenses = [...prevAllExpenses, expense];
+      const newAllExpenses = [...(prevAllExpenses || []), expense];
       localStorage.setItem("expenses", JSON.stringify(newAllExpenses));
       return newAllExpenses;
     });
@@ -45,14 +50,14 @@ export default function useExpense() {
   };
   const handleRemoveExpense = (removeExpenseId: number) => {
     setAllExpenses((prevAllExpenses) => {
-      const newExpenses = prevAllExpenses.filter(
+      const newExpenses = (prevAllExpenses || []).filter(
         (expense) => expense.expenseId !== removeExpenseId
       );
       localStorage.setItem("expenses", JSON.stringify(newExpenses));
       return newExpenses;
     });
   };
-  const allPrices: number[] = allExpenses.map((cost) =>
+  const allPrices: number[] = (allExpenses || []).map((cost) =>
     Number(cost.expenseCost)
   );
   const totalExpensesAmount: number = allPrices.reduce(

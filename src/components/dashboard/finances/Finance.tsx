@@ -21,7 +21,7 @@ export default function Finance() {
     handleRemoveExpense,
   } = useExpense();
   const remainingSalary: number =
-    Number(savedSalary.salaryAmount) - totalExpensesAmount;
+    Number(savedSalary?.salaryAmount) - totalExpensesAmount;
   return (
     <div className='wrapper'>
       <div className='finance-content py-4 md:flex-row flex-col gap-4 w-full justify-between'>
