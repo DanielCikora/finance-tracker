@@ -23,7 +23,7 @@ export type ExpensesPropsDataTypes = {
   >;
   expense: ExpensesDataTypes;
   handleSaveExpenses: () => void;
-  allExpenses: ExpensesDataTypes[];
+  allExpenses: ExpensesDataTypes[] | null;
   salaryCurrency: SalaryCurrencyType;
   handleRemoveExpense: (removeExpenseId: number) => void;
 };
