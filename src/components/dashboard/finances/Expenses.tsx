@@ -23,7 +23,7 @@ export default function Expenses({
   return (
     <div className='expenses-content shadow-md shadow-black max-w-[500px] max-h-[500px] rounded p-4 w-full h-full flex flex-col justify-between gap-4'>
       <ul className='expense-item flex flex-col gap-2 overflow-y-auto h-full p-2'>
-        {allExpenses.map((expense) => (
+        {allExpenses?.map((expense) => (
           <li
             className='relative shadow-md shadow-black rounded py-3 px-2 flex gap-2 justify-between items-center'
             key={expense.expenseId + 1}
