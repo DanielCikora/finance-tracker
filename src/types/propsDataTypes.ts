@@ -26,6 +26,7 @@ export type ExpensesPropsDataTypes = {
   allExpenses: ExpensesDataTypes[] | null;
   salaryCurrency: SalaryCurrencyType;
   handleRemoveExpense: (removeExpenseId: number) => void;
+  expenseError: string | null;
 };
 
 export type TotalsPropsDataTypes = {

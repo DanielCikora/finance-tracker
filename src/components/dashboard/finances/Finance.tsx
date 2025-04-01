@@ -16,6 +16,7 @@ export default function Finance() {
     allExpenses,
     expense,
     totalExpensesAmount,
+    expenseError,
     handleChangeExpenses,
     handleSaveExpenses,
     handleRemoveExpense,
@@ -47,6 +48,7 @@ export default function Finance() {
             handleChangeExpenses={handleChangeExpenses}
             handleSaveExpenses={handleSaveExpenses}
             handleRemoveExpense={handleRemoveExpense}
+            expenseError={expenseError}
           />
         </div>
       </div>

@@ -2,8 +2,9 @@
 import { ExpenseCategory, ExpensesDataTypes } from "@/types/financesDataTypes";
 import { useEffect, useState } from "react";
 export default function useExpense() {
+  const [expenseError, setExpenseError] = useState<string | null>(null);
   const [allExpenses, setAllExpenses] = useState<ExpensesDataTypes[] | null>(
-    []
+    null
   );
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -34,6 +35,18 @@ export default function useExpense() {
     }));
   };
   const handleSaveExpenses = () => {
+    if (!expense.expenseName) {
+      setExpenseError("Expense name is required!");
+      return;
+    }
+    if (!expense.expenseCost) {
+      setExpenseError("Expense cost is required!");
+      return;
+    }
+    if (!expense.expenseCategory) {
+      setExpenseError("Expense category is required!");
+      return;
+    }
     setAllExpenses((prevAllExpenses) => {
       const newAllExpenses = [...(prevAllExpenses || []), expense];
       localStorage.setItem("expenses", JSON.stringify(newAllExpenses));
@@ -47,6 +60,7 @@ export default function useExpense() {
       expenseDate: format,
       expenseCategory: ExpenseCategory.MISCELLANEOUS,
     }));
+    setExpenseError(null);
   };
   const handleRemoveExpense = (removeExpenseId: number) => {
     setAllExpenses((prevAllExpenses) => {
@@ -68,6 +82,7 @@ export default function useExpense() {
     allExpenses,
     expense,
     totalExpensesAmount,
+    expenseError,
     handleChangeExpenses,
     handleSaveExpenses,
     handleRemoveExpense,
