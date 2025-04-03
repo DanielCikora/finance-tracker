@@ -12,26 +12,32 @@ export default function Salary({
   currencyOptions,
   timePeriodOptions,
   savedSalary,
+  salaryError,
 }: SalaryPropsDataTypes) {
   const [viewMore, setViewMore] = useState<boolean>(false);
   const handleViewMore = () => {
     setViewMore((prevViewMore) => !prevViewMore);
   };
   return (
-    <div className='salary-content shadow-md max-w-[500px] max-h-fit shadow-black rounded p-4 w-full flex flex-col justify-between gap-4'>
+    <div className='salary-content shadow-md max-w-[500px] max-h-fit shadow-black rounded p-6 w-full flex flex-col justify-between gap-4'>
       <div className='flex flex-col justify-between'>
         <h2 className='text-center text-2xl font-semibold'>
           {savedSalary.salaryAmount || 0} {savedSalary.salaryCurrency}{" "}
           {savedSalary.salaryTimePeriod}
         </h2>
+        {salaryError && (
+          <p className='text-red-500 text-center py-2'>{salaryError}</p>
+        )}
         <button
           className='cursor-pointer'
           onClick={handleViewMore}
           type='button'
         >
           <FontAwesomeIcon
-            className='block text-4xl'
-            icon={viewMore ? faCaretUp : faCaretDown}
+            className={`block text-4xl text-dark translate-all duration-700 ease-in-out ${
+              viewMore ? "rotate-180" : "rotate-0"
+            }`}
+            icon={faCaretDown}
           />
         </button>
         <div

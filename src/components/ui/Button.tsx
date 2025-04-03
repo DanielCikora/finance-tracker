@@ -15,7 +15,7 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`block cursor-pointer px-2 w-full max-w-[200px] text-white py-3 rounded bg-navy font-semibold ${className}`}
+      className={`block cursor-pointer px-2 w-full max-w-[200px] text-white py-3 rounded bg-primary hover:bg-black transition-all duration-200 ease-in-out font-semibold ${className}`}
     >
       {text}
     </button>

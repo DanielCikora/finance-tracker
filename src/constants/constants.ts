@@ -25,5 +25,5 @@ export const chartOptions = {
       fontSize: 16,
     },
   },
-  colors: ["#395B64", "#E63946"],
+  colors: ["#0077B6", "#FF6B6B"],
 };

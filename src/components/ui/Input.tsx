@@ -14,7 +14,7 @@ export default function Input({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      className={`block w-full p-3 border-2 border-solid border-navy rounded ${className}`}
+      className={`block w-full p-3 border-2 border-solid border-dark rounded ${className}`}
     />
   );
 }

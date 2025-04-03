@@ -7,11 +7,13 @@ export default function Dashboard() {
       <header className='header'>
         <Header />
       </header>
+      <section className='dashboard-stocks'>
+        <Stocks />
+      </section>
       <main className='dashboard'>
         <section className='dashboard-stocks'>
           <Finance />
         </section>
-        <section className='dashboard-stocks'>{/* <Stocks /> */}</section>
       </main>
     </>
   );

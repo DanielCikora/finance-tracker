@@ -6,6 +6,7 @@ import {
 } from "@/types/financesDataTypes";
 import { useEffect, useState } from "react";
 export default function useSalary() {
+  const [salaryError, setSalaryError] = useState<string | null>(null);
   const [salary, setSalary] = useState<SalaryDataTypes>({
     salaryAmount: "",
     salaryCurrency: SalaryCurrencyType.USD,
@@ -34,12 +35,18 @@ export default function useSalary() {
     }));
   };
   const handleSaveSalaryAmount = () => {
+    if (!salary.salaryAmount) {
+      setSalaryError("Please input salary amount.");
+      return;
+    }
     setSavedSalary(salary);
     localStorage.setItem("salary", JSON.stringify(salary));
+    setSalaryError(null);
   };
   return {
     salary,
     savedSalary,
+    salaryError,
     handleChangeSalaryAmount,
     handleSaveSalaryAmount,
   };

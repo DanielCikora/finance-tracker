@@ -15,6 +15,7 @@ export type SalaryPropsDataTypes = {
   currencyOptions: SalaryCurrencyType[];
   timePeriodOptions: SalaryTimePeriod[];
   savedSalary: SalaryDataTypes;
+  salaryError: string | null;
 };
 
 export type ExpensesPropsDataTypes = {

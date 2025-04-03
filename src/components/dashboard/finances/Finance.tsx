@@ -9,6 +9,7 @@ export default function Finance() {
   const {
     salary,
     savedSalary,
+    salaryError,
     handleChangeSalaryAmount,
     handleSaveSalaryAmount,
   } = useSalary();
@@ -26,12 +27,13 @@ export default function Finance() {
   return (
     <div className='wrapper'>
       <div className='finance-content py-4 md:flex-row flex-col gap-4 w-full justify-between'>
-        <div className='flex flex-row gap-4 w-full'>
+        <div className='flex flex-row gap-4 w-full justify-center'>
           <Salary
             salary={salary}
             currencyOptions={currencyOptions}
             timePeriodOptions={timePeriodOptions}
             savedSalary={savedSalary}
+            salaryError={salaryError}
             handleSaveSalaryAmount={handleSaveSalaryAmount}
             handleChangeSalaryAmount={handleChangeSalaryAmount}
           />
