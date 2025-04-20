@@ -1,5 +1,12 @@
 import { ChangeEventHandler, ReactNode } from "react";
 
+export type ModalDataTypes = {
+  maxWidth: number;
+  maxHeight: number;
+  children: ReactNode;
+  closeModal: () => void;
+};
+
 export type SelectDataTypes = {
   name: string;
   onChange: ChangeEventHandler<HTMLSelectElement>;

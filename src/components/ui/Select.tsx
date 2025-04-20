@@ -10,7 +10,7 @@ export default function Select({
       onChange={onChange}
       value={value}
       name={name}
-      className='cursor-pointer p-2.5 text-center w-full border-2 border-dark border-navy rounded'
+      className='cursor-pointer text-white focus:outline-none placeholder:text-muted p-2.5 text-center w-full border border-white border-navy rounded'
     >
       {children}
     </select>

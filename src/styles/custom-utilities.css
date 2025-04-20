@@ -1,59 +1,71 @@
-/* Background Colors */
-.bg-primary {
-  @apply bg-[#0077B6]; /* Trustworthy Blue */
-}
-.bg-secondary {
-  @apply bg-[#FF6B6B]; /* Expense Indicator */
-}
-.bg-success {
-  @apply bg-[#27AE60]; /* Income Indicator */
-}
-.bg-accent {
-  @apply bg-[#FACC15]; /* Gold Accent for highlights */
-}
-.bg-light {
-  @apply bg-[#F5F5F5]; /* Light Gray for Background */
+/* ===================== */
+/* 🎨 Background Colors */
+/* ===================== */
+
+.bg-background {
+  @apply bg-[#0f172a]; /* Deep Navy */
 }
 .bg-card {
-  @apply bg-[#FFFFFF]; /* White for Cards/Containers */
+  @apply bg-[#1e293b]; /* Slightly lighter than background */
+}
+.bg-income {
+  @apply bg-[#22c55e]; /* Green for income */
+}
+.bg-expense {
+  @apply bg-[#ef4444]; /* Red for expenses */
+}
+.bg-action {
+  @apply bg-[#10b981]; /* Teal for Add buttons */
+}
+.bg-action-hover {
+  @apply bg-[#34d399]; /* Lighter teal on hover */
+}
+.bg-live {
+  @apply bg-[#38bdf8]; /* Sky blue for live/stock indicator */
 }
 
-/* Text Colors */
+/* ===================== */
+/* 🎨 Text Colors */
+/* ===================== */
+
 .text-primary {
-  @apply text-[#0077B6]; /* Trustworthy Blue */
+  @apply text-[#ffffff]; /* Main white text */
 }
-.text-secondary {
-  @apply text-[#FF6B6B]; /* Expense Indicator */
+.text-muted {
+  @apply text-[#94a3b8]; /* Muted gray/blue for subtitles or labels */
 }
-.text-success {
-  @apply text-[#27AE60]; /* Income Indicator */
+.text-income {
+  @apply text-[#22c55e];
 }
-.text-accent {
-  @apply text-[#FACC15]; /* Gold Accent for Highlights */
+.text-expense {
+  @apply text-[#ef4444];
 }
-.text-dark {
-  @apply text-[#333333]; /* Dark Gray for Readability */
+.text-action {
+  @apply text-[#10b981];
 }
-.text-light {
-  @apply text-[#F1F5F4]; /* Soft White for Contrast */
+.text-live {
+  @apply text-[#38bdf8];
 }
 
-/* Borders */
-.border-primary {
-  @apply border-[#0077B6];
+/* ===================== */
+/* 🧱 Border Colors */
+/* ===================== */
+
+.border-card {
+  @apply border-[#1e293b];
 }
-.border-secondary {
-  @apply border-[#FF6B6B];
+.border-income {
+  @apply border-[#22c55e];
 }
-.border-success {
-  @apply border-[#27AE60];
+.border-expense {
+  @apply border-[#ef4444];
 }
-.border-accent {
-  @apply border-[#FACC15];
+.border-action {
+  @apply border-[#10b981];
 }
-.border-light {
-  @apply border-[#F5F5F5];
+.border-muted {
+  @apply border-[#94a3b8];
 }
-.border-dark {
-  @apply border-[#333333];
+.border-live {
+  @apply border-[#38bdf8];
 }

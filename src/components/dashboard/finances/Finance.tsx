@@ -1,18 +1,11 @@
 "use client";
-import { currencyOptions, timePeriodOptions } from "@/constants/constants";
 import Expenses from "./Expenses";
-import Salary from "./Salary";
 import Totals from "./Totals";
 import useSalary from "@/hooks/useSalary";
 import useExpense from "@/hooks/useExpense";
+import Salary from "./Salary";
+import { currencyOptions, timePeriodOptions } from "@/constants/constants";
 export default function Finance() {
-  const {
-    salary,
-    savedSalary,
-    salaryError,
-    handleChangeSalaryAmount,
-    handleSaveSalaryAmount,
-  } = useSalary();
   const {
     allExpenses,
     expense,
@@ -22,38 +15,50 @@ export default function Finance() {
     handleSaveExpenses,
     handleRemoveExpense,
   } = useExpense();
+  const {
+    salary,
+    savedSalary,
+    salaryError,
+    handleChangeSalaryAmount,
+    handleSaveSalaryAmount,
+  } = useSalary();
   const remainingSalary: number =
     Number(savedSalary?.salaryAmount) - totalExpensesAmount;
   return (
-    <div className='wrapper'>
-      <div className='finance-content py-4 md:flex-row flex-col gap-4 w-full justify-between'>
-        <div className='flex flex-row gap-4 w-full justify-center'>
-          <Salary
-            salary={salary}
-            currencyOptions={currencyOptions}
-            timePeriodOptions={timePeriodOptions}
-            savedSalary={savedSalary}
-            salaryError={salaryError}
-            handleSaveSalaryAmount={handleSaveSalaryAmount}
-            handleChangeSalaryAmount={handleChangeSalaryAmount}
-          />
-          <Totals
-            salary={salary}
-            savedSalary={savedSalary}
-            remainingSalary={remainingSalary}
-            totalExpensesAmount={totalExpensesAmount}
-          />
-          <Expenses
-            allExpenses={allExpenses}
-            expense={expense}
-            salaryCurrency={salary.salaryCurrency}
-            handleChangeExpenses={handleChangeExpenses}
-            handleSaveExpenses={handleSaveExpenses}
-            handleRemoveExpense={handleRemoveExpense}
-            expenseError={expenseError}
-          />
+    <section className='dashboard-stocks'>
+      <div className='wrapper'>
+        <div className='finance-content py-4 md:flex-row flex-col gap-4 w-full justify-between'>
+          <div className='flex flex-col items-center gap-4 w-full justify-center'>
+            {/* Balance */}
+            <Salary
+              salary={salary}
+              currencyOptions={currencyOptions}
+              timePeriodOptions={timePeriodOptions}
+              savedSalary={savedSalary}
+              salaryError={salaryError}
+              handleSaveSalaryAmount={handleSaveSalaryAmount}
+              handleChangeSalaryAmount={handleChangeSalaryAmount}
+            />
+            {/* Salary */}
+            <Expenses
+              allExpenses={allExpenses}
+              expense={expense}
+              salaryCurrency={salary.salaryCurrency}
+              handleChangeExpenses={handleChangeExpenses}
+              handleSaveExpenses={handleSaveExpenses}
+              handleRemoveExpense={handleRemoveExpense}
+              expenseError={expenseError}
+            />
+            {/* Expenses */}
+            <Totals
+              salary={salary}
+              savedSalary={savedSalary}
+              remainingSalary={remainingSalary}
+              totalExpensesAmount={totalExpensesAmount}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
