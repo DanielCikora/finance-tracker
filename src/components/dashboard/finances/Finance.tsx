@@ -1,6 +1,6 @@
 "use client";
 import Expenses from "./Expenses";
-import Totals from "./Totals";
+import Totals from "./PieChart";
 import useSalary from "@/hooks/useSalary";
 import useExpense from "@/hooks/useExpense";
 import Salary from "./Salary";

@@ -24,45 +24,51 @@ export default function Expenses({
   };
   return (
     <section className='bg-card expenses-content shadow-md shadow-black max-w-[1000px] max-h-[500px] rounded p-4 w-full h-full flex flex-col justify-between gap-4'>
-      <ul className='expense-item flex flex-col gap-2 overflow-y-auto h-full p-2'>
-        {allExpenses?.map((expense, index) => (
-          <li
-            className='shadow-md shadow-black rounded py-3 px-2 flex flex-col w-full'
-            key={`${expense.expenseId + 1}-${index}`}
-          >
-            <span className='flex flex-row items-center justify-between w-full'>
-              <p className='w-full max-w-[160px]'>
-                {expense.expenseId + 1}. {expense.expenseCategory}
-              </p>
-              <p className='w-full max-w-[240px]'>
-                {expense.expenseName} - {expense.expenseCost} {salaryCurrency}
-              </p>
-              <p className='w-full max-w-[240px]'>{expense.expenseDate}</p>
-              <div className='w-full max-w-[240px] flex gap-4 items-center justify-end'>
-                <button
-                  className=' text-blue cursor-pointer hover:underline underline-offset-2'
-                  onClick={() => handleViewDescription(index)}
-                >
-                  View Details
-                </button>
-                <XButton
-                  onClick={() => handleRemoveExpense(expense.expenseId)}
-                  type='button'
-                />
-              </div>
-            </span>
-            <p
-              className={`transition-all duration-200 ease-in-out left-0 overflow-hidden block ${
-                viewDescription === index
-                  ? "h-full max-h-80 border border-solid border-black p-2 rounded"
-                  : "h-0 max-h-0"
-              }`}
+      {allExpenses?.length === 0 ? (
+        <h2 className='text-white text-center font-semibold text-xl'>
+          No expenses found. Please add expenses.
+        </h2>
+      ) : (
+        <ul className='expense-item flex flex-col gap-2 overflow-y-auto h-full p-2'>
+          {allExpenses?.map((expense, index) => (
+            <li
+              className='shadow-md shadow-black rounded py-3 px-2 flex flex-col w-full'
+              key={`${expense.expenseId + 1}-${index}`}
             >
-              {expense.expenseDescription || "No Description Found."}
-            </p>
-          </li>
-        ))}
-      </ul>
+              <span className='flex flex-row items-center justify-between w-full'>
+                <p className='w-full max-w-[160px]'>
+                  {expense.expenseId + 1}. {expense.expenseCategory}
+                </p>
+                <p className='w-full max-w-[240px]'>
+                  {expense.expenseName} - {expense.expenseCost} {salaryCurrency}
+                </p>
+                <p className='w-full max-w-[240px]'>{expense.expenseDate}</p>
+                <div className='w-full max-w-[240px] flex gap-4 items-center justify-end'>
+                  <button
+                    className=' text-blue cursor-pointer hover:underline underline-offset-2'
+                    onClick={() => handleViewDescription(index)}
+                  >
+                    View Details
+                  </button>
+                  <XButton
+                    onClick={() => handleRemoveExpense(expense.expenseId)}
+                    type='button'
+                  />
+                </div>
+              </span>
+              <p
+                className={`transition-all duration-200 ease-in-out left-0 overflow-hidden block ${
+                  viewDescription === index
+                    ? "h-full max-h-80 border border-solid border-black p-2 rounded"
+                    : "h-0 max-h-0"
+                }`}
+              >
+                {expense.expenseDescription || "No Description Found."}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
       <div className='w-full flex flex-col max-h-fit gap-4 p-2'>
         {expenseError && (
           <p className='text-red font-medium text-lg'>{expenseError}</p>
@@ -74,7 +80,7 @@ export default function Expenses({
         {viewAddExpenses && (
           <Modal
             closeModal={() => setViewAddExpenses(false)}
-            maxWidth={800}
+            maxWidth={400}
             maxHeight={500}
           >
             <div className='flex flex-col gap-4 w-full h-full'>
