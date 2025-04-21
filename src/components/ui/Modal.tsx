@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ModalDataTypes } from "@/types/reusablesDataTypes";
 export default function Modal({
   children,
-  closeModal,
   maxWidth,
   maxHeight,
+  closeModal,
 }: ModalDataTypes) {
   return (
     <dialog
@@ -13,14 +13,14 @@ export default function Modal({
       role='dialog'
     >
       <div
-        className={`relative max-w-[${maxWidth}px] max-h-[${maxHeight}px] bg-card rounded-lg px-4 pt-12 pb-4`}
+        className={`relative max-w-[${maxWidth}px] max-h-[${maxHeight}px] bg-card rounded-lg px-4 pt-8 pb-4`}
       >
         <button
           className='cursor-pointer block absolute top-1 right-1 px-1 hover:bg-red-100 transition-all duration-200 ease-in-out rounded-full'
           onClick={closeModal}
         >
           <FontAwesomeIcon
-            className='block text-red-500 text-4xl'
+            className='block text-red-500 text-3xl'
             icon={faXmark}
           />
         </button>

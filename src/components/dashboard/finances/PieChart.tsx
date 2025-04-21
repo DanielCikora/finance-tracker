@@ -6,24 +6,24 @@ export default function PieChart({
   totalExpensesAmount,
 }: TotalsPropsDataTypes) {
   const chartData = [
-    ["Salary & Expenses"],
+    ["Salary", "Expenses"],
     ["Salary", Number(savedSalary.salaryAmount)],
     ["Expenses", Number(totalExpensesAmount)],
   ];
   console.log(chartData);
   return (
-    <>
+    <div className='relative bg-card lg:h-[400px] md:h-[300px] h-[200px] w-full rounded-lg'>
       {savedSalary.salaryAmount === 0 && totalExpensesAmount === 0 ? (
         <h2 className='text-center text-xl font-semibold'>No data.</h2>
       ) : (
         <Chart
-          width={500}
-          height={500}
+          width='100%'
+          height='100%'
           chartType='PieChart'
           data={chartData}
           options={chartOptions}
         />
       )}
-    </>
+    </div>
   );
 }

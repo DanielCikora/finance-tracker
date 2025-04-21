@@ -23,16 +23,16 @@ export default function Expenses({
     setViewDescription(viewDescription === index ? null : index);
   };
   return (
-    <section className='bg-card expenses-content shadow-md shadow-black max-w-[1000px] max-h-[500px] rounded p-4 w-full h-full flex flex-col justify-between gap-4'>
+    <section className='expenses-content bg-card rounded p-4 w-full h-fit flex flex-col justify-between gap-4'>
       {allExpenses?.length === 0 ? (
         <h2 className='text-white text-center font-semibold text-xl'>
           No expenses found. Please add expenses.
         </h2>
       ) : (
-        <ul className='expense-item flex flex-col gap-2 overflow-y-auto h-full p-2'>
+        <ul className='expense-item flex flex-col gap-2 overflow-y-auto w-full h-full p-2'>
           {allExpenses?.map((expense, index) => (
             <li
-              className='shadow-md shadow-black rounded py-3 px-2 flex flex-col w-full'
+              className='shadow-md shadow-black text-white rounded py-3 px-2 flex flex-col w-full'
               key={`${expense.expenseId + 1}-${index}`}
             >
               <span className='flex flex-row items-center justify-between w-full'>
@@ -69,7 +69,7 @@ export default function Expenses({
           ))}
         </ul>
       )}
-      <div className='w-full flex flex-col max-h-fit gap-4 p-2'>
+      <div className='w-full flex flex-col max-h-full gap-5 p-2'>
         {expenseError && (
           <p className='text-red font-medium text-lg'>{expenseError}</p>
         )}
@@ -81,9 +81,12 @@ export default function Expenses({
           <Modal
             closeModal={() => setViewAddExpenses(false)}
             maxWidth={400}
-            maxHeight={500}
+            maxHeight={400}
           >
             <div className='flex flex-col gap-4 w-full h-full'>
+              <h2 className='text-2xl text-white font-semibold text-center mb-6'>
+                Add Expense
+              </h2>
               <div className='flex gap-4 justify-between'>
                 <Input
                   name='expenseName'
@@ -111,12 +114,12 @@ export default function Expenses({
                   ))}
                 </Select>
               </div>
-              <div className='w-full flex flex-col gap-40'>
+              <div className='w-full flex flex-col gap-20'>
                 <Textarea
                   cols={1}
                   name='expenseDescription'
                   onChange={handleChangeExpenses}
-                  placeholder='Expense Description'
+                  placeholder='Expense Description (Optional)'
                   rows={4}
                   value={expense.expenseDescription}
                 />

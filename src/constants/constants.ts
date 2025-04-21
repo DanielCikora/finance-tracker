@@ -17,13 +17,14 @@ export const chartOptions = {
   alignment: "center",
   is3D: true,
   pieStartAngle: 100,
+  backgroundColor: "transparent",
   legend: {
     position: "bottom",
     alignment: "center",
     textStyle: {
-      color: "black",
+      color: "white",
       fontSize: 16,
     },
   },
-  colors: ["#0077B6", "#FF6B6B"],
+  colors: ["#22c55e", "#ef4444"],
 };

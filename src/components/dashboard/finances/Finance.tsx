@@ -1,10 +1,12 @@
 "use client";
 import Expenses from "./Expenses";
-import Totals from "./PieChart";
 import useSalary from "@/hooks/useSalary";
 import useExpense from "@/hooks/useExpense";
 import Salary from "./Salary";
 import { currencyOptions, timePeriodOptions } from "@/constants/constants";
+import Balance from "./Balance";
+import PieChart from "./PieChart";
+import TotalExpenses from "./TotalExpenses";
 export default function Finance() {
   const {
     allExpenses,
@@ -25,38 +27,41 @@ export default function Finance() {
   const remainingSalary: number =
     Number(savedSalary?.salaryAmount) - totalExpensesAmount;
   return (
-    <section className='dashboard-stocks'>
-      <div className='wrapper'>
-        <div className='finance-content py-4 md:flex-row flex-col gap-4 w-full justify-between'>
-          <div className='flex flex-col items-center gap-4 w-full justify-center'>
-            {/* Balance */}
-            <Salary
-              salary={salary}
-              currencyOptions={currencyOptions}
-              timePeriodOptions={timePeriodOptions}
-              savedSalary={savedSalary}
-              salaryError={salaryError}
-              handleSaveSalaryAmount={handleSaveSalaryAmount}
-              handleChangeSalaryAmount={handleChangeSalaryAmount}
-            />
-            {/* Salary */}
-            <Expenses
-              allExpenses={allExpenses}
-              expense={expense}
-              salaryCurrency={salary.salaryCurrency}
-              handleChangeExpenses={handleChangeExpenses}
-              handleSaveExpenses={handleSaveExpenses}
-              handleRemoveExpense={handleRemoveExpense}
-              expenseError={expenseError}
-            />
-            {/* Expenses */}
-            <Totals
-              salary={salary}
-              savedSalary={savedSalary}
-              remainingSalary={remainingSalary}
-              totalExpensesAmount={totalExpensesAmount}
-            />
-          </div>
+    <section className='finance py-20 h-full'>
+      <div className='wrapper flex justify-center h-full'>
+        <div className='finance-stats grid gap-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full h-full'>
+          <Balance
+            remainingSalary={remainingSalary}
+            salaryCurrency={savedSalary.salaryCurrency}
+          />
+          <Salary
+            salary={salary}
+            currencyOptions={currencyOptions}
+            timePeriodOptions={timePeriodOptions}
+            savedSalary={savedSalary}
+            salaryError={salaryError}
+            handleSaveSalaryAmount={handleSaveSalaryAmount}
+            handleChangeSalaryAmount={handleChangeSalaryAmount}
+          />
+          <TotalExpenses
+            totalExpensesAmount={totalExpensesAmount}
+            totalExpenseCurrency={savedSalary.salaryCurrency}
+          />
+          <PieChart
+            salary={salary}
+            savedSalary={savedSalary}
+            remainingSalary={remainingSalary}
+            totalExpensesAmount={totalExpensesAmount}
+          />
+          <Expenses
+            allExpenses={allExpenses}
+            expense={expense}
+            salaryCurrency={salary.salaryCurrency}
+            handleChangeExpenses={handleChangeExpenses}
+            handleSaveExpenses={handleSaveExpenses}
+            handleRemoveExpense={handleRemoveExpense}
+            expenseError={expenseError}
+          />
         </div>
       </div>
     </section>

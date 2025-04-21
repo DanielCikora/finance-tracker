@@ -16,7 +16,7 @@ export default function Textarea({
       value={value}
       rows={rows}
       cols={cols}
-      className={`block p-2 border-2 border-solid border-white rounded placeholder:text-white/10 ${className}`}
+      className={`block p-2 focus:outline-none border-2 border-solid text-white border-white rounded placeholder:text-white/10 ${className}`}
     />
   );
 }
