@@ -1,11 +1,11 @@
 import Card from "@/components/ui/Card";
 type TotalsPropsDataTypes = {
   totalExpensesAmount: number;
-  totalExpenseCurrency: string;
+  currencySymbol: string;
 };
 export default function TotalExpenses({
   totalExpensesAmount,
-  totalExpenseCurrency,
+  currencySymbol,
 }: TotalsPropsDataTypes) {
   return (
     <Card
@@ -13,7 +13,7 @@ export default function TotalExpenses({
       descriptionStyle={`${
         totalExpensesAmount <= 0 ? "text-white" : "text-expense"
       }`}
-      cardDescription={`- ${totalExpensesAmount} ${totalExpenseCurrency}`}
+      cardDescription={`- ${totalExpensesAmount} ${currencySymbol}`}
     />
   );
 }

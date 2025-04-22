@@ -1,16 +1,16 @@
 import Card from "@/components/ui/Card";
 type BalancePropsDataTypes = {
-  salaryCurrency: string;
   remainingSalary: number;
+  currencySymbol: string;
 };
 export default function Balance({
   remainingSalary,
-  salaryCurrency,
+  currencySymbol,
 }: BalancePropsDataTypes) {
   return (
     <Card
       cardTitle='Total Balance'
-      cardDescription={`${remainingSalary} ${salaryCurrency}`}
+      cardDescription={`${remainingSalary} ${currencySymbol}`}
     />
   );
 }

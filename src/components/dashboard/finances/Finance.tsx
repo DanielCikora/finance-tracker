@@ -3,10 +3,15 @@ import Expenses from "./Expenses";
 import useSalary from "@/hooks/useSalary";
 import useExpense from "@/hooks/useExpense";
 import Salary from "./Salary";
-import { currencyOptions, timePeriodOptions } from "@/constants/constants";
+import {
+  currencyOptions,
+  timePeriodOptions,
+  useCurrencySymbol,
+} from "@/constants/constants";
 import Balance from "./Balance";
 import PieChart from "./PieChart";
 import TotalExpenses from "./TotalExpenses";
+import DashboardStocks from "./stocks/DashboardStocks";
 export default function Finance() {
   const {
     allExpenses,
@@ -26,13 +31,14 @@ export default function Finance() {
   } = useSalary();
   const remainingSalary: number =
     Number(savedSalary?.salaryAmount) - totalExpensesAmount;
+  const currencySymbol = useCurrencySymbol(savedSalary.salaryCurrency);
   return (
     <section className='finance py-20 h-full'>
       <div className='wrapper flex justify-center h-full'>
         <div className='finance-stats grid gap-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full h-full'>
           <Balance
             remainingSalary={remainingSalary}
-            salaryCurrency={savedSalary.salaryCurrency}
+            currencySymbol={currencySymbol}
           />
           <Salary
             salary={salary}
@@ -42,10 +48,11 @@ export default function Finance() {
             salaryError={salaryError}
             handleSaveSalaryAmount={handleSaveSalaryAmount}
             handleChangeSalaryAmount={handleChangeSalaryAmount}
+            currencySymbol={currencySymbol}
           />
           <TotalExpenses
             totalExpensesAmount={totalExpensesAmount}
-            totalExpenseCurrency={savedSalary.salaryCurrency}
+            currencySymbol={currencySymbol}
           />
           <PieChart
             salary={salary}
@@ -56,12 +63,13 @@ export default function Finance() {
           <Expenses
             allExpenses={allExpenses}
             expense={expense}
-            salaryCurrency={salary.salaryCurrency}
             handleChangeExpenses={handleChangeExpenses}
             handleSaveExpenses={handleSaveExpenses}
             handleRemoveExpense={handleRemoveExpense}
             expenseError={expenseError}
+            currencySymbol={currencySymbol}
           />
+          <DashboardStocks />
         </div>
       </div>
     </section>

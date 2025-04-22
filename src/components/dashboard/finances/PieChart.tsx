@@ -10,7 +10,6 @@ export default function PieChart({
     ["Salary", Number(savedSalary.salaryAmount)],
     ["Expenses", Number(totalExpensesAmount)],
   ];
-  console.log(chartData);
   return (
     <div className='relative bg-card lg:h-[400px] md:h-[300px] h-[200px] w-full rounded-lg'>
       {savedSalary.salaryAmount === 0 && totalExpensesAmount === 0 ? (

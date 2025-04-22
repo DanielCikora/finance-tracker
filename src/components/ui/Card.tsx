@@ -12,7 +12,7 @@ export default function Card({
   children,
 }: CardPropsDataTypes) {
   return (
-    <article className='bg-card h-fit p-4 rounded-lg w-full relative grid place-items-center'>
+    <article className='bg-card h-fit p-5 rounded-lg w-full relative grid place-items-center'>
       <h2 className='text-muted font-medium text-2xl mb-6 text-center'>
         {cardTitle}
       </h2>

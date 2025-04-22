@@ -2,9 +2,6 @@
 import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import { SalaryPropsDataTypes } from "@/types/propsDataTypes";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "./../../ui/Button";
 import Card from "@/components/ui/Card";
 import PlusButton from "@/components/ui/PlusButton";
@@ -18,19 +15,18 @@ export default function Salary({
   timePeriodOptions,
   savedSalary,
   salaryError,
+  currencySymbol,
 }: SalaryPropsDataTypes) {
   const { openModal, closeModal, isOpen } = useModal();
   return (
     <Card
       cardTitle='Income'
-      cardDescription={`${savedSalary.salaryAmount || 0} ${
-        savedSalary.salaryCurrency
-      }
+      cardDescription={`${savedSalary.salaryAmount || 0} ${currencySymbol}
           ${savedSalary.salaryTimePeriod}`}
       descriptionStyle='text-income'
     >
       <PlusButton
-        className='absolute top-2 right-2'
+        className='absolute top-6 right-7'
         onClick={() => openModal("salaryModal")}
       />
       {isOpen("salaryModal") && (
@@ -59,7 +55,7 @@ export default function Salary({
                 >
                   {currencyOptions.map((currency) => (
                     <option key={currency} value={currency}>
-                      {currency}
+                      {currency} {currencySymbol}
                     </option>
                   ))}
                 </Select>

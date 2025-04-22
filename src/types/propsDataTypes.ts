@@ -16,6 +16,7 @@ export type SalaryPropsDataTypes = {
   timePeriodOptions: SalaryTimePeriod[];
   savedSalary: SalaryDataTypes;
   salaryError: string | null;
+  currencySymbol: string;
 };
 
 export type ExpensesPropsDataTypes = {
@@ -25,9 +26,9 @@ export type ExpensesPropsDataTypes = {
   expense: ExpensesDataTypes;
   handleSaveExpenses: () => void;
   allExpenses: ExpensesDataTypes[] | null;
-  salaryCurrency: SalaryCurrencyType;
   handleRemoveExpense: (removeExpenseId: number) => void;
   expenseError: string | null;
+  currencySymbol: string;
 };
 
 export type TotalsPropsDataTypes = {
