@@ -35,7 +35,7 @@ export default function Finance() {
   return (
     <section className='finance py-20 h-full'>
       <div className='wrapper flex justify-center h-full'>
-        <div className='finance-stats grid gap-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full h-full'>
+        <div className='finance-stats grid gap-5 lg:grid-cols-3 grid-cols-1 w-full h-full'>
           <Balance
             remainingSalary={remainingSalary}
             currencySymbol={currencySymbol}
@@ -54,22 +54,28 @@ export default function Finance() {
             totalExpensesAmount={totalExpensesAmount}
             currencySymbol={currencySymbol}
           />
-          <PieChart
-            salary={salary}
-            savedSalary={savedSalary}
-            remainingSalary={remainingSalary}
-            totalExpensesAmount={totalExpensesAmount}
-          />
-          <Expenses
-            allExpenses={allExpenses}
-            expense={expense}
-            handleChangeExpenses={handleChangeExpenses}
-            handleSaveExpenses={handleSaveExpenses}
-            handleRemoveExpense={handleRemoveExpense}
-            expenseError={expenseError}
-            currencySymbol={currencySymbol}
-          />
-          <DashboardStocks />
+          <div className='lg:col-span-2 col-span-1'>
+            <PieChart
+              salary={salary}
+              savedSalary={savedSalary}
+              remainingSalary={remainingSalary}
+              totalExpensesAmount={totalExpensesAmount}
+            />
+          </div>
+          <div className='col-span-1'>
+            <DashboardStocks />
+          </div>
+          <div className='lg:col-span-3 col-span-1'>
+            <Expenses
+              allExpenses={allExpenses}
+              expense={expense}
+              handleChangeExpenses={handleChangeExpenses}
+              handleSaveExpenses={handleSaveExpenses}
+              handleRemoveExpense={handleRemoveExpense}
+              expenseError={expenseError}
+              currencySymbol={currencySymbol}
+            />
+          </div>
         </div>
       </div>
     </section>

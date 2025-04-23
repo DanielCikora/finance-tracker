@@ -21,8 +21,8 @@ export default function Salary({
   return (
     <Card
       cardTitle='Income'
-      cardDescription={`${savedSalary.salaryAmount || 0} ${currencySymbol}
-          ${savedSalary.salaryTimePeriod}`}
+      cardDescription={`${savedSalary.salaryAmount || 0} ${currencySymbol} /
+          ${savedSalary.salaryTimePeriod || "YEAR"}`}
       descriptionStyle='text-income'
     >
       <PlusButton
@@ -55,7 +55,7 @@ export default function Salary({
                 >
                   {currencyOptions.map((currency) => (
                     <option key={currency} value={currency}>
-                      {currency} {currencySymbol}
+                      {currency}
                     </option>
                   ))}
                 </Select>

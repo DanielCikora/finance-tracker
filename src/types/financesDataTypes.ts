@@ -28,11 +28,11 @@ export enum SalaryCurrencyType {
 }
 
 export enum SalaryTimePeriod {
-  HOURLY = "Hourly",
-  DAILY = "Daily",
-  WEEKLY = "Weekly",
-  MONTHLY = "Monthly",
-  YEARLY = "Yearly",
+  HOUR = "Hour",
+  DAY = "Day",
+  WEEK = "Week",
+  MONTH = "Month",
+  YEAR = "Year",
 }
 
 export type SalaryDataTypes = {

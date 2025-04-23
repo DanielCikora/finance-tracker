@@ -14,11 +14,15 @@ export default function Stock({ ticker }: { ticker: string }) {
   }
   if (!stock) return <p className='text-xl'>No data available.</p>;
   return (
-    <div className='stock text-white flex justify-between gap-5 border-b border-solid border-white w-full py-2'>
-      <h2 className='font-semibold text-2xl w-[80px] '>{ticker}</h2>
-      <p className='font-medium text-2xl'>{stock?.currentPrice.toFixed(2)}</p>
+    <div className='stock text-white flex justify-between items-center md:gap-2 gap-1 border-b border-solid border-white w-full md:py-2 py-1'>
+      <h2 className='font-semibold md:text-xl sm:text-lg text-md w-full'>
+        {ticker}
+      </h2>
+      <p className='font-medium md:text-xl text-lg w-full'>
+        {stock?.currentPrice.toFixed(2)}
+      </p>
       <p
-        className={`text-2xl font-semibold ${
+        className={`md:text-xl text-md font-semibold w-full text-nowrap ${
           stock?.change >= 0 ? "text-income" : "text-expense"
         }`}
       >

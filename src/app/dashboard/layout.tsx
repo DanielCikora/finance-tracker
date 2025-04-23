@@ -1,4 +1,3 @@
-import Navigation from "@/components/navigation/Navigation";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Finance Tracker",
@@ -9,10 +8,5 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <Navigation />
-      <main>{children}</main>
-    </>
-  );
+  return <main>{children}</main>;
 }

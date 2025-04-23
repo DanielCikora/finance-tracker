@@ -12,12 +12,12 @@ export default function Card({
   children,
 }: CardPropsDataTypes) {
   return (
-    <article className='bg-card h-fit p-5 rounded-lg w-full relative grid place-items-center'>
-      <h2 className='text-muted font-medium text-2xl mb-6 text-center'>
+    <article className='bg-card h-full p-5 rounded-lg w-full relative grid place-items-center'>
+      <h2 className='text-muted font-medium md:text-2xl text-xl mb-6 text-center'>
         {cardTitle}
       </h2>
       <h3
-        className={`text-white font-semibold text-3xl text-center ${descriptionStyle}`}
+        className={`text-white font-medium md:text-3xl text-2xl text-center ${descriptionStyle}`}
       >
         {cardDescription}
       </h3>

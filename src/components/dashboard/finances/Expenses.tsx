@@ -24,49 +24,64 @@ export default function Expenses({
     setViewDescription(viewDescription === index ? null : index);
   };
   return (
-    <section className='expenses-content bg-card rounded p-4 w-full h-fit flex flex-col justify-between gap-4'>
+    <section className='expenses-content bg-card rounded-lg p-4 w-full h-fit flex flex-col justify-between gap-4'>
+      <h2 className='text-muted md:text-2xl text-xl font-medium text-center'>
+        Recent transactions
+      </h2>
       {allExpenses?.length === 0 ? (
         <h2 className='text-white text-center font-semibold text-xl'>
           No expenses found. Please add expenses.
         </h2>
       ) : (
-        <ul className='expense-item flex flex-col gap-2 overflow-y-auto w-full h-full p-2'>
+        <ul className='expense-item flex flex-col gap-2 sm:max-h-[240px] max-h-[220px] overflow-y-auto w-full h-full p-2'>
           {allExpenses?.map((expense, index) => {
             const icon = useCategoryIcon(expense.expenseCategory);
             return (
               <li
-                className='shadow-md shadow-black text-white rounded py-3 px-2 flex flex-col w-full'
+                className='text-white hover:bg-gray-600 hover:border-transparent sm:border-b border rounded-lg border-solid border-muted sm:py-1 py-4 px-2 flex flex-col w-full'
                 key={`${expense.expenseId + 1}-${index + 1}`}
               >
-                <span className='flex flex-row items-center justify-between w-full'>
-                  <p className='w-full max-w-[160px]'>
-                    {expense.expenseId + 1}.{" "}
-                    {icon && (
-                      <FontAwesomeIcon className='block text-xl' icon={icon} />
-                    )}
-                  </p>
-                  <p className='w-full max-w-[240px]'>
-                    {expense.expenseName} - {expense.expenseCost}{" "}
-                    {currencySymbol}
-                  </p>
-                  <p className='w-full max-w-[240px]'>{expense.expenseDate}</p>
-                  <div className='w-full max-w-[240px] flex gap-4 items-center justify-end'>
-                    <button
-                      className=' text-blue cursor-pointer hover:underline underline-offset-2'
-                      onClick={() => handleViewDescription(index)}
-                    >
-                      View Details
-                    </button>
-                    <XButton
-                      onClick={() => handleRemoveExpense(expense.expenseId)}
-                      type='button'
-                    />
+                <div className='flex w-full'>
+                  <div className='flex sm:flex-row flex-col w-full sm:justify-between items-center'>
+                    <div className='text-xl gap-1 flex flex-col'>
+                      <div className='flex sm:flex-row flex-col items-center gap-1'>
+                        <i className='md:min-w-[40px]'>
+                          {icon && (
+                            <FontAwesomeIcon
+                              className='block text-2xl'
+                              icon={icon}
+                            />
+                          )}
+                        </i>
+                        <h4 className='text-md'>{expense.expenseName}</h4>
+                      </div>
+                      <p className='text-sm'>{expense.expenseDate}</p>
+                    </div>
+                    <div className='flex sm:flex-row flex-col md:gap-4 gap-2 items-center'>
+                      <div className='text-center flex flex-col gap-1'>
+                        <p className='text-expense w-full text-nowrap font-semibold text-2xl'>
+                          - {expense.expenseCost} {currencySymbol}
+                        </p>
+                        <button
+                          className='font-semibold text-blue cursor-pointer hover:underline underline-offset-2'
+                          onClick={() => handleViewDescription(index)}
+                        >
+                          {viewDescription === index
+                            ? "Hide Details"
+                            : "View Details"}
+                        </button>
+                      </div>
+                      <XButton
+                        onClick={() => handleRemoveExpense(expense.expenseId)}
+                        type='button'
+                      />
+                    </div>
                   </div>
-                </span>
+                </div>
                 <p
                   className={`transition-all duration-200 ease-in-out left-0 overflow-hidden block ${
                     viewDescription === index
-                      ? "h-full max-h-80 border border-solid border-black p-2 rounded"
+                      ? "h-full max-h-140 border border-solid border-muted py-2 px-1 rounded"
                       : "h-0 max-h-0"
                   }`}
                 >
@@ -78,9 +93,6 @@ export default function Expenses({
         </ul>
       )}
       <div className='w-full flex flex-col max-h-full gap-5 p-2'>
-        {expenseError && (
-          <p className='text-red font-medium text-lg'>{expenseError}</p>
-        )}
         <PlusButton
           onClick={() => setViewAddExpenses(true)}
           className='rounded-full max-w-fit py-1.5 px-2 self-end'
@@ -95,7 +107,12 @@ export default function Expenses({
               <h2 className='text-2xl text-white font-semibold text-center mb-6'>
                 Add Expense
               </h2>
-              <div className='flex gap-4 justify-between'>
+              {expenseError && (
+                <p className='text-expense text-center font-medium text-lg'>
+                  {expenseError}
+                </p>
+              )}
+              <div className='flex md:flex-row flex-col gap-4 justify-between'>
                 <Input
                   name='expenseName'
                   placeholder='Expense Name'

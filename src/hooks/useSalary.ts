@@ -10,12 +10,12 @@ export default function useSalary() {
   const [salary, setSalary] = useState<SalaryDataTypes>({
     salaryAmount: "",
     salaryCurrency: SalaryCurrencyType.EUR,
-    salaryTimePeriod: SalaryTimePeriod.MONTHLY,
+    salaryTimePeriod: SalaryTimePeriod.MONTH,
   });
   const [savedSalary, setSavedSalary] = useState<SalaryDataTypes>({
     salaryAmount: "",
     salaryCurrency: SalaryCurrencyType.EUR,
-    salaryTimePeriod: SalaryTimePeriod.MONTHLY,
+    salaryTimePeriod: SalaryTimePeriod.MONTH,
   });
   useEffect(() => {
     if (typeof window !== "undefined") {
