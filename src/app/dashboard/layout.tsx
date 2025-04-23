@@ -16,7 +16,6 @@ export const metadata: Metadata = {
     "Next.js",
     "Daniel Cikora",
   ],
-  colorScheme: "dark",
   openGraph: {
     title: "Finance Tracker",
     description: "Track your stocks with style. Built by Daniel Cikora.",
