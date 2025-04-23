@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { StocksDataTypes } from "@/types/stocksDataTypes";
-
-const BASE_URL = "https://finnhub.io/api/v1/quote";
-const API_KEY = process.env.NEXT_PUBLIC_APP_STOCKS_API_KEY;
+import { StocksDataTypes, FinnHubDataTypes } from "@/types/stocksDataTypes";
 
 export default function useStock(ticker: string) {
   const [stock, setStock] = useState<StocksDataTypes | null>(null);
@@ -13,12 +10,9 @@ export default function useStock(ticker: string) {
     let isMounted: boolean = true;
     const fetchStock = async () => {
       try {
-        const response = await axios.get<{ c: number; d: number; dp: number }>(
-          `${BASE_URL}`,
-          {
-            params: { symbol: ticker, token: API_KEY },
-          }
-        );
+        const response = await axios.get<FinnHubDataTypes>("/api/quote", {
+          params: { symbol: ticker },
+        });
         if (!isMounted) return;
         const { c: currentPrice, d: change, dp: percentChange } = response.data;
         setStock({ currentPrice, change, percentChange });

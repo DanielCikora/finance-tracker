@@ -3,3 +3,8 @@ export type StocksDataTypes = {
   change: number;
   percentChange: number;
 };
+export type FinnHubDataTypes = {
+  c: number;
+  d: number;
+  dp: number;
+};
