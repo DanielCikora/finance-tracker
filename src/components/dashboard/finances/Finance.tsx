@@ -33,7 +33,10 @@ export default function Finance() {
     Number(savedSalary?.salaryAmount) - totalExpensesAmount;
   const currencySymbol = useCurrencySymbol(savedSalary.salaryCurrency);
   return (
-    <section className='finance py-20 h-full'>
+    <section className='finance pb-20 h-full'>
+      <h2 className='text-center text-white font-semibold md:text-4xl text-2xl md:pb-16 pb-10 pt-6'>
+        Expense Tracker
+      </h2>
       <div className='wrapper flex justify-center h-full'>
         <div className='finance-stats grid gap-5 lg:grid-cols-3 grid-cols-1 w-full h-full'>
           <Balance
